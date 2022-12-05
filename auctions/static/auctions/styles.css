@@ -1,0 +1,194 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 10px;
+}
+
+/* Create-Listing Form */
+
+#create {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    font-size: large;
+    padding-left: 1rem;
+}
+
+
+#create label {
+    padding-top: 1rem;
+}
+
+#create label:first-of-type {
+    padding-top: 0;
+}
+
+#create input, textarea {
+    font-size: medium;
+    padding: 0.5rem;
+}
+
+#listing__submit {
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 80%;
+}
+
+.submit__btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Listing Card */
+
+.card__container {
+    display: flex;
+    flex-wrap: wrap;
+    transition: 0.5s all ease-in-out;
+}
+
+.card {
+    min-width: 18rem;
+    max-width: 18rem;
+    height: 25rem;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(
+        150deg,
+        rgb(26, 167, 120),
+        rgb(12, 151, 105)
+    );
+    border-radius: 10px;
+    margin: 1rem;
+}
+
+.card__body {
+    width: 94%;
+    height: 45%;
+    background-color: white;
+    margin: 0 0.5rem 0.5rem 0.5rem;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(
+        150deg,
+        rgb(20, 129, 93),
+        rgb(5, 78, 54)
+    );
+}
+
+.card__title {
+    text-align: center;
+}
+
+.card__desc {
+    text-align: left;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.card__image {
+    object-fit: scale-down;
+    height: 13rem;
+    background: linear-gradient(
+        150deg,
+        rgb(0, 128, 85),
+        rgb(0, 88, 59)
+    );
+    width: 94%;
+    margin-top: 0.5rem;
+    border-radius: 10px 10px 0 0;
+}
+
+.card__category {
+    position: absolute;
+    top: 43%;
+    left: 5%;
+    background-color: black;
+    padding: 0.2rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card__listing__category {
+    color: white;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.card__button {
+    border: 1px solid rgb(11, 68, 49);
+    padding: 0.5rem;
+    margin: 1rem;
+    background: rgb(14, 95, 68);
+    border-radius: 5px;
+    color: black;
+    transition: 0.1s ease-in-out;
+}
+
+.card__button:hover {
+    color: rgb(82, 255, 154);
+    text-decoration: none;
+}
+
+/* Selecting Category */
+
+#category {
+    padding: 0.3rem;
+}
+
+.select__category {
+    padding: 0.3rem;
+    background-color: rgb(21, 141, 101);
+    border: none;
+    border-radius: 8px;
+    color: white;
+}
+
+/* Buttons */
+
+button {
+    border: none;
+    background-color: rgb(12, 141, 102);
+    padding: 0.3rem;
+    border-radius: 8px;
+    min-width: 50px;
+    color: white;
+}
+
+button:hover {
+    color:rgb(82, 255, 154);
+}
+
+/* Comments */
+
+.comment-list {
+    margin-top: 1rem;
+    border: 1px solid black;
+    max-width: 50vh;
+    border-bottom: none;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid black;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* Won the auction */
+
+.won {
+    background:rgb(0, 128, 85);
+    max-width: 561px;
+    text-align: center;
+    padding: 1rem;
+    color: rgb(255, 230, 230);
+    border-radius: 8px;
+}

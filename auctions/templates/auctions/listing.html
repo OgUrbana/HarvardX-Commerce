@@ -1,0 +1,62 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %} 
+    
+    {% if user.is_authenticated and listing.isActive %}
+        {% if checkOwner %}
+            <form action="{% url 'endAuction' id=listing.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="remove_btn">End Auction</button>
+            </form>
+        {% endif %}
+        {% if checkWatchlist %}
+            <form action="{% url 'removeWatchlist' id=listing.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="remove_btn">Remove From Watchlist</button>
+            </form>
+        {% else %}
+        <form action="{% url 'addWatchlist' id=listing.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="add_btn">Add to Watchlist</button>
+        </form>
+        {% endif %}
+    {% endif %}
+
+    {% if not listing.isActive and user == listing.price.user %} 
+        <p class="won">You won the auction!</p>
+    {% endif %}
+
+    <h2>{{ listing.category }} Pokemon: {{ listing.title }}</h2>
+    <img src="{{ listing.imageUrl }}" alt="{{ listing.title }}" height="300px">
+    <p>{{ listing.description }}</p>
+    <p>Posted by: {{ listing.owner }}</p>
+    <h5>${{ listing.price.bid }}</h5>
+
+    {% if user.is_authenticated and listing.isActive %}
+    <form action="{% url 'addBid' id=listing.id  %}" method="POST">
+    {% csrf_token %}
+            <input type="number" name="getBid" min="{{ listing.price.bid }}" id="BidInput" placeholder="Add New Bid">
+            <button type="submit" class="submit_btn">Bid</button>
+        </form>
+    {% endif %}
+
+    <div class="listing-comments">
+        <h2>Comments</h2>
+        {% if user.is_authenticated %}
+            <form action="{% url 'addComment' id=listing.id %}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="getComment" id="commentInput" placeholder="Add New Comment">
+                <button type="submit" class="submit_btn">Post</button>
+            </form>
+        {% endif %}
+        <ul class="comment-list">
+            {% for comment in allComments %}
+                <li class="comment">
+                    {{ comment.message }}
+                    <p>Author: <strong>{{ comment.author }}</strong></p>
+                </li>
+            {% endfor %}
+        </ul> 
+    </div>
+
+{% endblock %}
